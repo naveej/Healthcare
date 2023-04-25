@@ -1,4 +1,4 @@
-<!-- Php login -->
+<!-- Php -->
 <?php
 
 // start the session
