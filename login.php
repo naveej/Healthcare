@@ -1,5 +1,6 @@
 <?php
 // Php code to start session and login the user
+// asynchronous message
 
 // start the session
 session_start();
