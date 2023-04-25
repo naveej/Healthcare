@@ -1,6 +1,6 @@
 <?php
 // start the session
-// session_start();
+session_start();
 
 // check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
