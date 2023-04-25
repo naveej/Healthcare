@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['loggedin'])){
+    header('location: dashboard.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +18,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -32,7 +40,7 @@
                     <a class="nav__link" href="#section--3">Testimonials</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link nav__link--btn btn--show-modal" href="#">Open account</a>
+                    <a class="nav__link nav__link--btn btn--show-modal" href="#">Register</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link nav__link--btn-login btn--show-modal-login" href="#">Login</a>
@@ -60,7 +68,7 @@
         <div class="section__title">
             <h2 class="section__description">Features</h2>
             <h3 class="section__header">
-                Everything you need in a modern bank and more.
+                Everything you need about Health Connect.
             </h3>
         </div>
 
@@ -72,7 +80,7 @@
                         <use xlink:href="img/icons.svg#icon-monitor"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">100% digital bank</h5>
+                <h5 class="features__header">100% digital solutions</h5>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias
                     sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam
@@ -86,7 +94,7 @@
                         <use xlink:href="img/icons.svg#icon-trending-up"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">Watch your money grow</h5>
+                <h5 class="features__header">Get Expertise on healthcare</h5>
                 <p>
                     Nesciunt quos autem dolorum voluptates cum dolores dicta fuga
                     inventore ab? Nulla incidunt eius numquam sequi iste pariatur
@@ -102,7 +110,7 @@
                         <use xlink:href="img/icons.svg#icon-credit-card"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">Free debit card included</h5>
+                <h5 class="features__header">Diet Plans</h5>
                 <p>
                     Quasi, fugit in cumque cupiditate reprehenderit debitis animi enim
                     eveniet consequatur odit quam quos possimus assumenda dicta fuga
@@ -123,13 +131,13 @@
         <div class="operations">
             <div class="operations__tab-container">
                 <button class="btn operations__tab operations__tab--1 operations__tab--active" data-tab="1">
-                    <span>01</span>Instant Transfers
+                    <span>01</span>Get Up to date diet plans
                 </button>
                 <button class="btn operations__tab operations__tab--2" data-tab="2">
-                    <span>02</span>Instant Loans
+                    <span>02</span>Get regular news on latest healtcare techs
                 </button>
                 <button class="btn operations__tab operations__tab--3" data-tab="3">
-                    <span>03</span>Instant Closing
+                    <span>03</span>Get up to date workout plans
                 </button>
             </div>
             <div class="operations__content operations__content--1 operations__content--active">
