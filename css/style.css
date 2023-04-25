@@ -220,6 +220,14 @@ select {
     display: block;
     transition: all 0.3s;
   }
+
+  .nav__link--btn-login:link,
+  .nav__link--btn-login:visited {
+    padding: 0.2rem 1.5rem;
+    border-radius: 3rem;
+    background-color: var(--color-secondary);
+    color: #222;
+  }
   
   .nav__link--btn:link,
   .nav__link--btn:visited {
@@ -653,7 +661,7 @@ select {
   }
   
   /* MODAL WINDOW */
-  .modal {
+  .modal,.modal-login {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -708,6 +716,11 @@ select {
     grid-column: 1 / span 2;
     justify-self: center;
     margin-top: 1rem;
+  }
+
+  .show__password {
+    aspect-ratio: 1/1;
+    width: 1.5rem;
   }
   
   .btn--close-modal {
