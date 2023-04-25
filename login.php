@@ -1,5 +1,4 @@
 <?php
-// Php code to start session and login the user
 
 // start the session
 session_start();
