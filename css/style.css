@@ -66,17 +66,17 @@ select {
 :root {
     /* colors */
 
-    --color-primary: #FF6969;
-    --color-secondary: #A6D0DD;
+    --color-primary: #99DFB2;
+    --color-secondary: #FF6969;
     --color-tertiary: #FFD3B0;
-    --color-primary-darker: #cc5454;
-    --color-secondary-darker: #84a6b0;
-    --color-tertiary-darker: #cca88c;    ;
-    --color-primary-opacity: rgba(255,105,105,0.5);
-    --color-secondary-opacity: rgba(166,208,221,0.5);
+    --color-primary-darker: #4ca46b;
+    --color-secondary-darker: #ff1d1d;
+    --color-tertiary-darker: #ffa864;    ;
+    --color-primary-opacity: rgba(153,223,178,0.5);
+    --color-secondary-opacity: rgba(255,105,105,0.5);
     --color-tertiary-opacity: rgba(255,211,176,0.5);
-    --gradient-primary: linear-gradient(to top left, #FF6969, #ff1d1d);
-    --gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
+    --gradient-primary: linear-gradient(to top left, #99DFB2, #4ca46b);
+    --gradient-secondary: linear-gradient(to top left, #FF6969, #ff1d1d);
 }
   
   * {
@@ -198,6 +198,7 @@ select {
   .nav__logo {
     height: 4.5rem;
     transition: all 0.3s;
+    cursor: pointer;
   }
   
   .nav__links {
@@ -260,7 +261,7 @@ select {
   
   h1 {
     font-size: 5.5rem;
-    line-height: 1.35;
+    line-height: 1.2;
   }
   
   h4 {
