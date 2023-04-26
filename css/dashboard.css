@@ -122,6 +122,8 @@ body {
     border-radius: .75rem;
     text-decoration: none;
     color: #fff;
+    cursor: pointer;
+    z-index: 100;
 }
 
 .meal-name {
