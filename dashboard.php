@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/root.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
@@ -22,16 +23,25 @@
   <div class="rec__container">
   <div class="search__container">
     <form action="" id="food-form">
-      <button type="submit">
-    <i class='bx bx-search-alt search__btn'></i>
+      <button class="search__btn" type="submit">
+      <i class='bx bxs-right-arrow-alt search__icon'></i>
       </button>
       <input id="food-input" class="search__input" type="text" name="" id="" placeholder="Enter your todays intake...">
     </form>
 </div>
-<div class="result__container">
+<div class="result__container zero__size">
+  <div class="nutrient__results hidden" id="nutrient-results">
+    <h2>hello</h2>
+  </div>
+  <div class="recommendations hidden" id="recommendations">
+    <h2>Recommended Foods</h2>
+    <ul class="result" id="result"></ul>
+    <div class="food__container" id="meal"></div>
+  </div>
   
 </div>
 
   </div>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>

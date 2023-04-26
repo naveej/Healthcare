@@ -19,6 +19,7 @@ session_start();
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -74,12 +75,10 @@ session_start();
         </div>
 
         <div class="features">
-            <img src="img/digital-lazy.jpg" data-src="img/digital.jpg" alt="Computer" class="features__img lazy-img" />
+            <img class='features__img' src="images/user_reg_blur.jpg" data-src="images/user-Registration-1.png" alt="Computer" class="features__img lazy-img" />
             <div class="features__feature">
                 <div class="features__icon">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-monitor"></use>
-                    </svg>
+                <i class='bx bxs-user'></i>
                 </div>
                 <h5 class="features__header">User registration</h5>
                 <p>
@@ -89,23 +88,19 @@ session_start();
 
             <div class="features__feature">
                 <div class="features__icon">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-trending-up"></use>
-                    </svg>
+                <i class='bx bx-search-alt' ></i>
                 </div>
                 <h5 class="features__header">Search functionality</h5>
                 <p>
                 Allow users to search for specific lifestyle recommendations, such as food, fitness.
                 </p>
             </div>
-            <img src="img/grow-lazy.jpg" data-src="img/grow.jpg" alt="Plant" class="features__img lazy-img" />
+            <img class='features__img' src="images/search blur.jpg" data-src="images/search.jpg" alt="Search" class="features__img lazy-img" />
 
-            <img src="img/card-lazy.jpg" data-src="img/card.jpg" alt="Credit card" class="features__img lazy-img" />
+            <img src="images/diet blur.jpg" data-src="images/diet.jpg" alt="Diet" class="features__img lazy-img" />
             <div class="features__feature">
                 <div class="features__icon">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-credit-card"></use>
-                    </svg>
+                <i class='bx bxs-bowl-rice' ></i>
                 </div>
                 <h5 class="features__header">Diet Recommendations</h5>
                 <p>
@@ -130,59 +125,44 @@ session_start();
                     <span>01</span>User Login
                 </button>
                 <button class="btn operations__tab operations__tab--2" data-tab="2">
-                    <span>02</span>Get regular news on latest healtcare techs
+                    <span>02</span>User Registration
                 </button>
                 <button class="btn operations__tab operations__tab--3" data-tab="3">
-                    <span>03</span>Get up to date workout plans
-                </button>
+                    <span>03</span>Search functionality                </button>
             </div>
             <div class="operations__content operations__content--1 operations__content--active">
                 <div class="operations__icon operations__icon--1">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-upload"></use>
-                    </svg>
+                <i class='bx bx-right-arrow-alt' ></i>
                 </div>
                 <h5 class="operations__header">
-                    Tranfser money to anyone, instantly! No fees, no BS.
+                This is the unique identifier that you use to log in to your account. Make sure it is something you can remember easily.
                 </h5>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
+                
                 </p>
             </div>
 
             <div class="operations__content operations__content--2">
                 <div class="operations__icon operations__icon--2">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-home"></use>
-                    </svg>
+                <i class='bx bxs-user' ></i>
+
                 </div>
                 <h5 class="operations__header">
-                    Buy a home or make your dreams come true, with instant loans.
+                User registration is the process by which a user creates an account or profile on a website.It typically involves providing personal information, such as a name, email address, and password, and agreeing to the terms and conditions of the platform.
                 </h5>
                 <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                    cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                    anim id est laborum.
+                    
                 </p>
             </div>
             <div class="operations__content operations__content--3">
                 <div class="operations__icon operations__icon--3">
-                    <svg>
-                        <use xlink:href="img/icons.svg#icon-user-x"></use>
-                    </svg>
+                <i class='bx bx-search-alt' ></i>
                 </div>
                 <h5 class="operations__header">
-                    No longer need your account? No problem! Close it instantly.
+                Search functionality refers to the ability to search for and retrieve specific information from a database or website. It is a critical component of many websites and applications, allowing users to quickly and easily find the diet plan they are looking for.
                 </h5>
                 <p>
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                    officia deserunt mollit anim id est laborum. Ut enim ad minim
-                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                    ea commodo consequat.
+                    
                 </p>
             </div>
         </div>
@@ -192,24 +172,19 @@ session_start();
         <div class="section__title section__title--testimonials">
             <h2 class="section__description">Not sure yet?</h2>
             <h3 class="section__header">
-                Millions of Bankists are already making their lifes simpler.
+                Come join us to have healthier diet plan
             </h3>
         </div>
 
         <div class="slider">
             <div class="slide slide--1">
                 <div class="testimonial">
-                    <h5 class="testimonial__header">Best financial decision ever!</h5>
+                    <h5 class="testimonial__header">Best diet plan!</h5>
                     <blockquote class="testimonial__text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Accusantium quas quisquam non? Quas voluptate nulla minima
-                        deleniti optio ullam nesciunt, numquam corporis et asperiores
-                        laboriosam sunt, praesentium suscipit blanditiis. Necessitatibus
-                        id alias reiciendis, perferendis facere pariatur dolore veniam
-                        autem esse non voluptatem saepe provident nihil molestiae.
+                    I gained about 40 pounds in less than 2 years and noticed my cholesterol had rapidly increased. I decided it was time for a change if I wanted to stay fit and healthy. I felt scared being listed as “obese”. I knew the weight had to come off. I didn’t know how fast I would lose weight and was a bit skeptical, but only 5 months later on this program I am a size 6 instead of a size 12. I found a healthy balance with not restricting myself to certain things I like, such as Starbucks or desserts, but just limiting the amount I consumed. I incorporated daily walking into my routine as well as taking the stairs instead of elevators.
                     </blockquote>
                     <address class="testimonial__author">
-                        <img src="img/user-1.jpg" alt="" class="testimonial__photo" />
+                        <img src="images/user-1.jpg" alt="" class="testimonial__photo" />
                         <h6 class="testimonial__name">Aarav Lynn</h6>
                         <p class="testimonial__location">San Francisco, USA</p>
                     </address>
@@ -219,43 +194,19 @@ session_start();
             <div class="slide slide--2">
                 <div class="testimonial">
                     <h5 class="testimonial__header">
-                        The last step to becoming a complete minimalist
+                        Very health beneficial
                     </h5>
                     <blockquote class="testimonial__text">
-                        Quisquam itaque deserunt ullam, quia ea repellendus provident,
-                        ducimus neque ipsam modi voluptatibus doloremque, corrupti
-                        laborum. Incidunt numquam perferendis veritatis neque repellendus.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
-                        deserunt exercitationem deleniti.
+                    “I’ve been on the HealthConnect for two weeks. I am really excited, it’s unbelievable! In two weeks, I am just so empowered. Every day I look forward to everything that’s new, so I am excited… on top of everything, I was like, ‘You know what, I’m going to trust HealthConnect!’” 
                     </blockquote>
                     <address class="testimonial__author">
-                        <img src="img/user-2.jpg" alt="" class="testimonial__photo" />
+                        <img src="images/user-2.jpg" alt="" class="testimonial__photo" />
                         <h6 class="testimonial__name">Miyah Miles</h6>
                         <p class="testimonial__location">London, UK</p>
                     </address>
                 </div>
             </div>
 
-            <div class="slide slide--3">
-                <div class="testimonial">
-                    <h5 class="testimonial__header">
-                        Finally free from old-school banks
-                    </h5>
-                    <blockquote class="testimonial__text">
-                        Debitis, nihil sit minus suscipit magni aperiam vel tenetur
-                        incidunt commodi architecto numquam omnis nulla autem,
-                        necessitatibus blanditiis modi similique quidem. Odio aliquam
-                        culpa dicta beatae quod maiores ipsa minus consequatur error sunt,
-                        deleniti saepe aliquid quos inventore sequi. Necessitatibus id
-                        alias reiciendis, perferendis facere.
-                    </blockquote>
-                    <address class="testimonial__author">
-                        <img src="img/user-3.jpg" alt="" class="testimonial__photo" />
-                        <h6 class="testimonial__name">Francisco Gomes</h6>
-                        <p class="testimonial__location">Lisbon, Portugal</p>
-                    </address>
-                </div>
-            </div>
 
             <!-- <div class="slide"><img src="img/img-1.jpg" alt="Photo 1" /></div>
             <div class="slide"><img src="img/img-2.jpg" alt="Photo 2" /></div>
@@ -270,11 +221,10 @@ session_start();
     <section class="section section--sign-up">
         <div class="section__title">
             <h3 class="section__header">
-                The best day to join Bankist was one year ago. The second best is
-                today!
+                The best day to join HealthConnect today
             </h3>
         </div>
-        <button class="btn btn--show-modal">Open your free account today!</button>
+        <button class="btn btn--show-modal">Register Now...!</button>
     </section>
 
     <footer class="footer">
@@ -301,12 +251,9 @@ session_start();
                 <a class="footer__link" href="#">Contact Us</a>
             </li>
         </ul>
-        <img src="img/icon.png" alt="Logo" class="footer__logo" />
+        <img src="images/logo.png" alt="Logo" class="footer__logo" />
         <p class="footer__copyright">
-            &copy; Copyright by
-            <a class="footer__link twitter-link" target="_blank" href="https://twitter.com/jonasschmedtman">Jonas
-                Schmedtmann</a>. Use for learning or your portfolio. Don't use to teach. Don't claim
-            as your own product.
+            &copy; Copyright byHO9
         </p>
     </footer>
 
