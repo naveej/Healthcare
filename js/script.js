@@ -284,4 +284,36 @@ $(document).ready(function () {
       },
     });
   });
+
+  $("#registrationForm").submit(function (e) {
+    e.preventDefault(); // prevent the form from submitting normally
+
+    // submit the form via AJAX
+    $.ajax({
+      type: "POST",
+      url: "registration.php",
+      data: $("#registrationForm").serialize(),
+      success: function (response) {
+        if (response === '"success"') {
+          // Redirect to dashboard or homepage
+          closeModal();
+          Swal.fire({
+            title: "Success",
+            text: "Successfully registered with Health Connect",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        } else {
+          // Display error message
+          $("#errorMessage").text(response);
+        }
+      },
+      error: function () {
+        // Display error message
+        $("#errorMessage").text(
+          "Something went wrong. Please try again later."
+        );
+      },
+    });
+  });
 });

@@ -585,7 +585,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 60rem;
+    max-width: 70rem;
     background-color: #f3f3f3;
     padding: 5rem 6rem;
     box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
@@ -671,3 +671,7 @@
     font-weight: 400;
   }
   
+.error__message {
+  color: red;
+  font-size: 1rem;
+}
