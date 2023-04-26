@@ -21,9 +21,11 @@
 <body>
   <div class="rec__container">
   <div class="search__container">
-    <form action="">
+    <form action="" id="food-form">
+      <button type="submit">
     <i class='bx bx-search-alt search__btn'></i>
-      <input class="search__input" type="text" name="" id="" placeholder="Enter your todays intake...">
+      </button>
+      <input id="food-input" class="search__input" type="text" name="" id="" placeholder="Enter your todays intake...">
     </form>
 </div>
 <div class="result__container">
