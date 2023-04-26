@@ -5,22 +5,18 @@
  
   1.Front-end: HTML, CSS, JavaScript
   
-  2.Back-end: Python, flask, SQLAlchemy
+  2.Back-end: PHP
   
   3.Databases: MySQL
-  
-  4.Data visualization libraries: Chart.js
   
 <h2>Installation</h2>
 To install and run the application locally, follow these steps:
 
-1.Clone this repository using git clone https://github.com/immortal958/Sustainability-Scorecard
+1.Clone this repository using git clone https://github.com/naveej/Healthconnect
 
-2.Navigate to the project directory using cd Sustainability-Scorecard
+2.Navigate to the project directory using cd Healthconnect
 
-3.Install the dependencies in cmd using install command
-
-4.Run the main.py file in project
+3.Run the index.html
 
 5.The application will now be accessible at http://127.0.0.1:5000
 
