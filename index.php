@@ -297,9 +297,7 @@ if(isset($_SESSION['loggedin'])){
         </form>
     </div>
     <div class="overlay hidden"></div>
-
     <script src="js/script.js"></script>
-</body>
 </body>
 
 </html>

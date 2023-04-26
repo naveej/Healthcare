@@ -20,8 +20,6 @@ const showPassword = document.querySelector(".show__password");
 const loginPassword = document.querySelector(".login__password");
 ///////////////////////////////////////
 
-console.log("hello");
-
 // * Modal window
 const openModal = function (e) {
   e.preventDefault();
