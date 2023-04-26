@@ -164,11 +164,10 @@ body {
 }
 
 .logout__btn {
-    
     display: block;
     position: fixed;
     top: 2%;
-    left: 2%;
+    right: 2%;
     background: var(--gradient-primary);
     font-weight: bolder;
     font-size: x-large;
