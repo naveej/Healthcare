@@ -16,17 +16,20 @@
   <title>Dashboard</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="css/root.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
   <div class="rec__container">
+    <button id="logoutbtn" class="logout__btn search__btn"><i class='bx bx-log-out' ></i> Logout</button>
   <div class="search__container">
     <form action="" id="food-form">
       <button class="search__btn" type="submit">
       <i class='bx bxs-right-arrow-alt search__icon'></i>
       </button>
       <input id="food-input" class="search__input" type="text" name="" id="" placeholder="Enter your todays intake...">
+      
     </form>
 </div>
 <div class="result__container zero__size">

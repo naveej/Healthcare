@@ -5,6 +5,7 @@ const nutrientResults = document.getElementById("nutrient-results");
 const recommendations = document.querySelector(".recommendations");
 const nutrients = document.querySelector(".nutrient__results");
 const resultsContainer = document.querySelector(".result__container");
+const logoutBtn = document.querySelector(".logout__btn");
 console.log("hello");
 foodForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -157,3 +158,16 @@ function getRecommendations(nutrientIntakeDistribution) {
 
   // ...
 }
+
+logoutBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Logging Out",
+    text: "You are being logged out",
+    icon: "warning",
+    confirmButtonText: "OK",
+  }).then(function () {
+    window.location.href = "logout.php";
+  });
+});
