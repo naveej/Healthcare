@@ -171,3 +171,8 @@ logoutBtn.addEventListener("click", function (e) {
     window.location.href = "logout.php";
   });
 });
+
+window.addEventListener("scroll", function () {
+  const topMove = window.scrollY + 5;
+  logoutBtn.style.top = `${topMove}px`;
+});
