@@ -20,7 +20,7 @@ To install and run the application locally, follow these steps:
 
 2.Navigate to the project directory using cd Healthconnect
 
-3.Run the index.html
+3.Run the index.php
 
 5.The application will now be accessible at http://127.0.0.1:5000
 
