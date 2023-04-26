@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['loggedin'])){
-    header('location: dashboard.php');
-}
+// if(isset($_SESSION['loggedin'])){
+//     header('location: dashboard.php');
+// }
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +18,7 @@ if(isset($_SESSION['loggedin'])){
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -80,11 +81,9 @@ if(isset($_SESSION['loggedin'])){
                         <use xlink:href="img/icons.svg#icon-monitor"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">100% digital solutions</h5>
+                <h5 class="features__header">User registration</h5>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde alias
-                    sint quos? Accusantium a fugiat porro reiciendis saepe quibusdam
-                    debitis ducimus.
+                Allow users to create their own accounts to save their preferences and settings.
                 </p>
             </div>
 
@@ -94,11 +93,9 @@ if(isset($_SESSION['loggedin'])){
                         <use xlink:href="img/icons.svg#icon-trending-up"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">Get Expertise on healthcare</h5>
+                <h5 class="features__header">Search functionality</h5>
                 <p>
-                    Nesciunt quos autem dolorum voluptates cum dolores dicta fuga
-                    inventore ab? Nulla incidunt eius numquam sequi iste pariatur
-                    quibusdam!
+                Allow users to search for specific lifestyle recommendations, such as food, fitness.
                 </p>
             </div>
             <img src="img/grow-lazy.jpg" data-src="img/grow.jpg" alt="Plant" class="features__img lazy-img" />
@@ -110,11 +107,10 @@ if(isset($_SESSION['loggedin'])){
                         <use xlink:href="img/icons.svg#icon-credit-card"></use>
                     </svg>
                 </div>
-                <h5 class="features__header">Diet Plans</h5>
+                <h5 class="features__header">Diet Recommendations</h5>
                 <p>
-                    Quasi, fugit in cumque cupiditate reprehenderit debitis animi enim
-                    eveniet consequatur odit quam quos possimus assumenda dicta fuga
-                    inventore ab.
+                    Get customized diet recommendations based on regular food intake
+                    
                 </p>
             </div>
         </div>
@@ -131,7 +127,7 @@ if(isset($_SESSION['loggedin'])){
         <div class="operations">
             <div class="operations__tab-container">
                 <button class="btn operations__tab operations__tab--1 operations__tab--active" data-tab="1">
-                    <span>01</span>Get Up to date diet plans
+                    <span>01</span>User Login
                 </button>
                 <button class="btn operations__tab operations__tab--2" data-tab="2">
                     <span>02</span>Get regular news on latest healtcare techs
@@ -319,14 +315,21 @@ if(isset($_SESSION['loggedin'])){
         <h2 class="modal__header">
             Register with &nbsp;<span class="highlight">HealthConnect</span>
         </h2>
-        <form class="modal__form">
+        <form class="modal__form" id="registrationForm">
             <label>First Name</label>
-            <input type="text" />
+            <input type="text"  name="firstName"/>
             <label>Last Name</label>
-            <input type="text" />
+            <input type="text"  name="lastName"/>
             <label>Email Address</label>
-            <input type="email" />
-            <button class="btn">Next step &rarr;</button>
+            <input type="email" name="email" />
+            <label>Phone Number</label>
+            <input type="text"  name="mobile"/>
+            <label>Password</label>
+            <input type="password" class="login__password" name="password"/>
+            <label for="showPassword">Show Password</label>
+            <input class="show__password" type="checkbox" id="showPassword" />
+            <span class='error__message' id="errorMessage"></span>
+            <button type="submit" class="btn">Next step &rarr;</button>
         </form>
     </div>
 
@@ -337,13 +340,13 @@ if(isset($_SESSION['loggedin'])){
         </h2>
         <form class="modal__form" id="loginForm">
             <label>Email Address</label>
-            <input name="username" type="text" id="inputEmail" />
+            <input name="username" type="email" id="inputEmail" />
             <label>Password</label>
             <input name="password" class="login__password" id="inputPassword" type="password" />
             <label for="showPassword">Show Password</label>
             <input class="show__password" type="checkbox" id="showPassword" />
-            <button type="submit" class="btn">Next step &rarr;</button>
-            <span id="errorMessage"></span>
+            <button type="submit" class="btn">Login &rarr;</button>
+            <span class='error__message' id="errorMessage"></span>
         </form>
     </div>
     <div class="overlay hidden"></div>
