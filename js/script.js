@@ -16,8 +16,8 @@ const header = document.querySelector(".header");
 const allSections = document.querySelectorAll(".section");
 const imgTargets = document.querySelectorAll("img[data-src]");
 const navLogoLink = document.querySelector(".nav__logo-link");
-const showPassword = document.querySelector(".show__password");
-const loginPassword = document.querySelector(".login__password");
+const showPassword = document.querySelectorAll(".show__password");
+const loginPassword = document.querySelectorAll(".login__password");
 ///////////////////////////////////////
 
 // * Modal window
@@ -51,10 +51,12 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-showPassword.addEventListener("change", function (e) {
-  if (this.checked) loginPassword.type = "text";
-  else loginPassword.type = "password";
-});
+showPassword.forEach((showPassword, index) =>
+  showPassword.addEventListener("change", function (e) {
+    if (this.checked) loginPassword[index].type = "text";
+    else loginPassword[index].type = "password";
+  })
+);
 
 // Page navigation
 btnScrollTo.addEventListener("click", function () {
@@ -80,10 +82,9 @@ navLogoLink.addEventListener("click", function (e) {
 document.querySelector(".nav__links").addEventListener("click", function (e) {
   e.preventDefault();
   // Matching strategy
-  const id = e.target.getAttribute("href");
-  console.log(id);
+  const eleid = e.target.getAttribute("href");
   if (e.target.classList.contains("nav__link"))
-    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+    document.querySelector(eleid).scrollIntoView({ behavior: "smooth" });
 });
 
 // * Tabs content
