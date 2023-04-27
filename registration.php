@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($firstName)) {
         $errors["firstName"] = "firstName is required.";
     }
-    if(empty($lastName)){
+    if (empty($lastName)) {
         $errors["lastName"] = "lastName is required.";
     }
     if (empty($email)) {
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($password)) {
         $errors["password"] = "Password is required.";
     }
-    if(empty($mobile)) {
+    if (empty($mobile)) {
         $mobile["password"] = "Password is required.";
     }
 
@@ -35,26 +35,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $servername = "localhost";
         $usernamesql = "root";
         $dbName = "healthconnect";
+        $dbPassword = "Rahul@123";
 
-        $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
+        $conn = mysqli_connect($servername, $usernamesql, '$dbPassword', $dbName);
         if ($conn->connect_error) {
             echo json_encode("failed");
             die("Connection failed: " . $conn->connect_error);
-        }else {
+        } else {
             // return success response
             $sql = "INSERT INTO users (firstName,lastName,mobile,email,password) VALUES('$firstName','$lastName','$mobile','$email','$password')";
-            
-            if(mysqli_query($conn, $sql)) {
-                echo json_encode("success");
 
-            }else {
+            if (mysqli_query($conn, $sql)) {
+                echo json_encode("success");
+            } else {
                 echo json_encode("Some Error occured couldn't register");
             }
-
-
         }
-
-        
     }
 }
-?>

@@ -19,11 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $servername = "localhost";
     $usernamesql = "root";
     $dbName = "healthconnect";
+    $dbPassword = "Rahul@123";
 
-    $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
+    $conn = mysqli_connect($servername, $usernamesql, '$dbPassword', $dbName);
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
+      die("Connection failed: " . $conn->connect_error);
+    }
 
     // check the username and password against the database
     $sql = "SELECT * FROM users WHERE email='$username' AND password='$password'";
@@ -42,4 +43,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-?>
