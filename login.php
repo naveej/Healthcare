@@ -19,9 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $servername = "localhost";
     $usernamesql = "root";
     $dbName = "healthconnect";
-    $dbPassword = "Rahul@123";
 
-    $conn = mysqli_connect($servername, $usernamesql, '$dbPassword', $dbName);
+    $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }

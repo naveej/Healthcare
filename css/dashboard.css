@@ -29,6 +29,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    pointer-events: none;   
 }
 
 .search__container {
@@ -37,7 +38,7 @@ body {
     background: var(--gradient-secondary);
     border-radius: .75rem;
     box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
-
+    pointer-events: all;
 }
 
 .search__btn {
@@ -52,7 +53,7 @@ body {
 }
 
 .search__input {
-    background-color: transparent;
+    background: none;
     outline: none;
     border: none;
     font-size: 1.5rem;
@@ -60,6 +61,7 @@ body {
     width: 90%;
     padding-inline: 1rem;
 }
+
 
 ::placeholder {
     color: rgba(255,255,255,0.5)
@@ -116,6 +118,7 @@ body {
 }
 
 .recipe__button {
+    display: block;
     background: var(--gradient-secondary);
     padding: .5rem 1rem;
     font-size: 1.5rem;
@@ -124,6 +127,12 @@ body {
     color: #fff;
     cursor: pointer;
     z-index: 100;
+    pointer-events: all;
+    z-index: 100;
+}
+
+.recipe__button:hover {
+    background: var(--color-secondary-darker);
 }
 
 .meal-name {
@@ -156,7 +165,6 @@ body {
 
 .hidden {
     opacity: 0;
-    pointer-events: none;
     height: 0px !important;
 }
 
@@ -173,4 +181,6 @@ body {
     background: var(--gradient-primary);
     font-weight: bolder;
     font-size: x-large;
+    z-index: 100;
+    pointer-events: all;
 }
