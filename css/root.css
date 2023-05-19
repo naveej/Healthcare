@@ -66,17 +66,17 @@ select {
 :root {
     /* colors */
 
-    --color-primary: #99DFB2;
-    --color-secondary: #FF6969;
+    --color-primary: #2dd6c1;
+    --color-secondary: #496bf2;
     --color-tertiary: #FFD3B0;
-    --color-primary-darker: #4ca46b;
-    --color-secondary-darker: #ff1d1d;
+    --color-primary-darker: #04d5bc;
+    --color-secondary-darker: #0534ee;
     --color-tertiary-darker: #ffa864;    ;
     --color-primary-opacity: rgba(153,223,178,0.5);
     --color-secondary-opacity: rgba(255,105,105,0.5);
     --color-tertiary-opacity: rgba(255,211,176,0.5);
-    --gradient-primary: linear-gradient(to top left, #99DFB2, #4ca46b);
-    --gradient-secondary: linear-gradient(to top left, #FF6969, #ff1d1d);
+    --gradient-primary: linear-gradient(to top left, #04d5bc, #04d5bc);
+    --gradient-secondary: linear-gradient(to top left, #496bf2, #0534ee);
 
     
   --fw-bold: 700;
