@@ -1,4 +1,4 @@
-# Healthconnect
+# NutriPlan
  
 Welcome to our website, a comprehensive platform for personalized nutrition and lifestyle recommendations based on your health status, medical history, and genetic profile. Our website utilizes cutting-edge technologies such as machine learning and natural language processing to analyze your unique health data and generate tailored recommendations to help you optimize your nutrition and overall well-being.
 
@@ -16,9 +16,9 @@ With our platform, you can track your progress and receive personalized guidance
 <h2>Installation</h2>
 To install and run the application locally, follow these steps:
 
-1.Clone this repository using git clone https://github.com/naveej/Healthconnect
+1.Clone this repository using git clone https://github.com/naveej/NutriPlan
 
-2.Navigate to the project directory using cd Healthconnect
+2.Navigate to the project directory using cd NutriPlan
 
 3.Run the index.php
 

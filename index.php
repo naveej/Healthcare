@@ -12,7 +12,7 @@ if (isset($_SESSION['loggedin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthConnect</title>
+    <title>NutriPlan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
     <header class="header" id="header">
         <nav class="nav">
-            <a class="nav__logo-link"><img src="images/logo.png" alt="HealthConnect logo" class="nav__logo" id="logo" data-version-number="1.0" /></a>
+            <a class="nav__logo-link"><img src="images/logo.png" alt="NutriPlan logo" class="nav__logo" id="logo" data-version-number="1.0" /></a>
             <ul class="nav__links">
                 <li class="nav__item">
                     <a class="nav__link" href="#section--1">Features</a>
@@ -193,7 +193,7 @@ if (isset($_SESSION['loggedin'])) {
                         Very health beneficial
                     </h5>
                     <blockquote class="testimonial__text">
-                        “I’ve been on the HealthConnect for two weeks. I am really excited, it’s unbelievable! In two weeks, I am just so empowered. Every day I look forward to everything that’s new, so I am excited… on top of everything, I was like, ‘You know what, I’m going to trust HealthConnect!’”
+                        “I’ve been on the NutriPlan for two weeks. I am really excited, it’s unbelievable! In two weeks, I am just so empowered. Every day I look forward to everything that’s new, so I am excited… on top of everything, I was like, ‘You know what, I’m going to trust NutriPlan!’”
                     </blockquote>
                     <address class="testimonial__author">
                         <img src="images/user-2.jpg" alt="" class="testimonial__photo" />
@@ -217,7 +217,7 @@ if (isset($_SESSION['loggedin'])) {
     <section class="section section--sign-up">
         <div class="section__title">
             <h3 class="section__header">
-                The best day to join HealthConnect today
+                The best day to join NutriPlan today
             </h3>
         </div>
         <button class="btn btn--show-modal">Register Now...!</button>
@@ -256,7 +256,7 @@ if (isset($_SESSION['loggedin'])) {
     <div class="modal hidden">
         <button class="btn--close-modal">&times;</button>
         <h2 class="modal__header">
-            Register with &nbsp;<span class="highlight">HealthConnect</span>
+            Register with &nbsp;<span class="highlight">NutriPlan</span>
         </h2>
         <form class="modal__form" id="registrationForm">
             <label>First Name</label>
