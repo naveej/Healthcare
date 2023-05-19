@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // connect to database
     $servername = "localhost";
     $usernamesql = "root";
-    $dbName = "healthconnect";
+    $dbName = "nutriplan";
 
     $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
     if ($conn->connect_error) {
