@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // save user to database
         $servername = "localhost";
         $usernamesql = "root";
-        $dbName = "healthconnect";
+        $dbName = "nutriplan";
 
         $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
         if ($conn->connect_error) {
