@@ -10,39 +10,48 @@ console.log("hello");
 foodForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const foodInput = document.getElementById("food-input").value;
-  console.log(foodInput);
 
   // API call to retrieve nutrient data for the food
   fetch(
-    `https://api.nutritionix.com/v1_1/search/${foodInput}?fields=item_name%2Cnf_total_fat%2Cnf_total_carbohydrate%2Cnf_protein&appId=eb69f562&appKey=6abfb6d1e676f6d3dde0e5156547afbf`
+    "https://trackapi.nutritionix.com/v2/natural/nutrients?timestamp=${timestamp}",
+    {
+      method: "POST",
+      headers: {
+        "x-app-id": "eb69f562",
+        "x-app-key": "6abfb6d1e676f6d3dde0e5156547afbf",
+        "Content-Type": "application/json", // Add the Content-Type header
+      },
+      body: JSON.stringify({ query: foodInput }), // Convert the body to a JSON string
+    }
   )
     .then((response) => response.json())
-    // console.log(data)
     .then((data) => {
-      console.log(data.hits);
-      const food = data.hits[0];
-      //   const nutrientData = food.fields.nutrient_values;
+      // Clear previous results
+      nutrientResults.innerHTML = "";
+      recommendations.classList.add("hidden");
+      nutrients.classList.add("hidden");
+      resultsContainer.classList.add("zero__size");
+
+      console.log(data.foods[0]);
+      const food = data.foods[0];
 
       const nutrientDensity = calculateNutrientDensity(
-        food.fields.nf_total_fat,
-        food.fields.nf_total_carbohydrate,
-        food.fields.nf_protein
+        //nutrient density
+        food.nf_total_fat,
+        food.nf_total_carbohydrate,
+        food.nf_protein
       );
       const nutrientDistribution =
-        calculateNutrientIntakeDistribution(nutrientDensity);
+        calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
       const nutrientRecommendations = getRecommendations(nutrientDistribution);
-      // console.log(nutrientDensity);
-      // console.log(nutrientDistribution);
-      // console.log(nutrientRecommendations);
       nutrientResults.innerHTML = `
-        <h2>${food.fields.item_name}</h2>
+        <h2>${food.food_name}</h2>
+        <p>Quantity: ${food.serving_qty}</p>
         <p>Nutrient Density: ${nutrientDensity.toFixed(2)}</p>
         <p>Nutrient Distribution:</p>
-        <ul class="nutrient__list">
-          <li>FAT: ${nutrientDistribution.FAT.toFixed(2)}%</li>
-          <li>CHOCDF: ${nutrientDistribution.CHOCDF.toFixed(2)}%</li>
-          <li>Protein: ${nutrientDistribution.PROCNT.toFixed(2)}%</li>
-        </ul>
+          <p>FAT: ${food.nf_total_fat}%</p>
+          <p>CHOCDF: ${food.nf_total_carbohydrate}%</p>
+          <p>Protein: ${food.nf_protein}%</p>
       `;
     })
     .catch((error) => {
@@ -53,12 +62,14 @@ foodForm.addEventListener("submit", (event) => {
 });
 
 function calculateNutrientDensity(totalFAT, totalCarbohydrate, protein) {
+  //nutrient density
   const calorieDensity =
     (totalFAT * 9 + totalCarbohydrate * 4 + protein * 4) / 100;
-  return protein / calorieDensity;
+  return protein / calorieDensity; //nutrient density
 }
 
 function calculateNutrientIntakeDistribution(nutrientDensity) {
+  //nutrient distribution
   const FAT = nutrientDensity * 0.25;
   //  const ENERC_KCAL =calculateNutrientDensity.totalFAT* 9 + calculateNutrientDensity.totalCarbohydrate * 4 + calculateNutrientDensity.protein * 4
   const CHOCDF = nutrientDensity * 0.45;
@@ -100,8 +111,12 @@ function getRecommendations(nutrientIntakeDistribution) {
         //console.log(data);
         for (let i = 0; i < data.hits.length; i++) {
           const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("li");
+          const listItem = document.createElement("p");
           listItem.textContent = recipe.label;
+          console.log(recommendationList.innerHTML);
+          // if (recommendationList.hasChildNodes()) {
+          //   recommendationList.removeChild();
+          // }
           recommendationList.appendChild(listItem);
           recommendations.classList.remove("hidden");
           nutrients.classList.remove("hidden");
@@ -132,8 +147,12 @@ function getRecommendations(nutrientIntakeDistribution) {
       .then((data) => {
         for (let i = 0; i < data.hits.length; i++) {
           const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("li");
+          const listItem = document.createElement("p");
           listItem.textContent = recipe.label;
+          // console.log(recommendationList.innerHTML);
+          // if (recommendationList.hasChildNodes()) {
+          //   recommendationList.removeChild();
+          // }
           recommendationList.appendChild(listItem);
         }
       });
@@ -149,8 +168,12 @@ function getRecommendations(nutrientIntakeDistribution) {
         // console.log(data.hits);
         for (let i = 0; i < data.hits.length; i++) {
           const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("li");
+          const listItem = document.createElement("p");
           listItem.textContent = recipe.label;
+          // console.log(recommendationList.innerHTML);
+          // if (recommendationList.hasChildNodes()) {
+          //   recommendationList.removeChild();
+          // }
           recommendationList.appendChild(listItem);
         }
       });
