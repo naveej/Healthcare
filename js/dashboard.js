@@ -9,6 +9,7 @@ const logoutBtn = document.querySelector(".logout__btn");
 const recommendationList = document.querySelector("#result");
 const mealList = document.getElementById("meal");
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function to fetch recommendation
 const fetchRecommendation = function (appId, appKey, dietType) {
   fetch(
@@ -16,12 +17,11 @@ const fetchRecommendation = function (appId, appKey, dietType) {
   )
     .then((response) => response.json())
     .then((data) => {
-      recommendationList.innerHTML = "";
       for (let i = 0; i < data.hits.length; i++) {
         const recipe = data.hits[i].recipe;
         const listItem = document.createElement("p");
         listItem.textContent = recipe.label;
-        recommendationList.appendChild(listItem);
+        // recommendationList.appendChild(listItem);
         addRecipeImageLink(recipe);
       }
     });
@@ -44,64 +44,10 @@ const addRecipeImageLink = function (recipe) {
                         </div>
                     </div>
                 `;
-  mealList.insertAdjacentHTML("afterbegin", html);
+  mealList.insertAdjacentHTML("beforeend", html);
 };
 
-foodForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const foodInput = document.getElementById("food-input").value;
-
-  // API call to retrieve nutrient data for the food
-  fetch(
-    "https://trackapi.nutritionix.com/v2/natural/nutrients?timestamp=${timestamp}",
-    {
-      method: "POST",
-      headers: {
-        "x-app-id": "eb69f562",
-        "x-app-key": "6abfb6d1e676f6d3dde0e5156547afbf",
-        "Content-Type": "application/json", // Add the Content-Type header
-      },
-      body: JSON.stringify({ query: foodInput }), // Convert the body to a JSON string
-    }
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      // Clear previous results
-      nutrientResults.innerHTML = "";
-      recommendationList.innerHTML = "";
-      mealList.innerHTML = "";
-      recommendations.classList.add("hidden");
-      nutrients.classList.add("hidden");
-      resultsContainer.classList.add("zero__size");
-
-      console.log(data.foods[0]);
-      const food = data.foods[0];
-
-      const nutrientDensity = calculateNutrientDensity(
-        //nutrient density
-        food.nf_total_fat,
-        food.nf_total_carbohydrate,
-        food.nf_protein
-      );
-      const nutrientDistribution =
-        calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
-      getRecommendations(nutrientDistribution);
-      nutrientResults.innerHTML = `
-        <h2>${food.food_name}</h2>
-        <p>Quantity: ${food.serving_qty}</p>
-        <p>Nutrient Density: ${nutrientDensity.toFixed(2)}</p>
-        <p>Nutrient Distribution:</p>
-          <p>FAT: ${food.nf_total_fat}%</p>
-          <p>CHOCDF: ${food.nf_total_carbohydrate}%</p>
-          <p>Protein: ${food.nf_protein}%</p>
-      `;
-    })
-    .catch((error) => {
-      nutrientResults.innerHTML =
-        "<p>An error occurred while retrieving nutrient data.</p>";
-    });
-});
-
+// Calculate Nutrient Density
 function calculateNutrientDensity(totalFAT, totalCarbohydrate, protein) {
   //nutrient density
   const calorieDensity =
@@ -150,6 +96,66 @@ function getRecommendations(nutrientIntakeDistribution) {
   }
 }
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fetch the Intake details on form submit
+foodForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const foodInput = document.getElementById("food-input").value;
+
+  // API call to retrieve nutrient data for the food
+  fetch(
+    "https://trackapi.nutritionix.com/v2/natural/nutrients?timestamp=${timestamp}",
+    {
+      method: "POST",
+      headers: {
+        "x-app-id": "eb69f562",
+        "x-app-key": "6abfb6d1e676f6d3dde0e5156547afbf",
+        "Content-Type": "application/json", // Add the Content-Type header
+      },
+      body: JSON.stringify({ query: foodInput }), // Convert the body to a JSON string
+    }
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      // Clear previous results
+      nutrientResults.innerHTML = "";
+      // recommendationList.innerHTML = "";
+      mealList.innerHTML = "";
+      recommendations.classList.add("hidden");
+      nutrients.classList.add("hidden");
+      resultsContainer.classList.add("zero__size");
+
+      console.log(data.foods[0]);
+      const food = data.foods[0];
+
+      const nutrientDensity = calculateNutrientDensity(
+        //nutrient density
+        food.nf_total_fat,
+        food.nf_total_carbohydrate,
+        food.nf_protein
+      );
+      const nutrientDistribution =
+        calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
+      getRecommendations(nutrientDistribution);
+      nutrientResults.innerHTML = `
+        <h2>${food.food_name}</h2>
+        <p>Quantity: ${food.serving_qty}</p>
+        <p>Nutrient Density: ${nutrientDensity.toFixed(2)}</p>
+        <p>Nutrient Distribution:</p>
+          <p>FAT: ${food.nf_total_fat}%</p>
+          <p>CHOCDF: ${food.nf_total_carbohydrate}%</p>
+          <p>Protein: ${food.nf_protein}%</p>
+      `;
+    })
+    .catch((error) => {
+      nutrientResults.innerHTML =
+        "<p>An error occurred while retrieving nutrient data.</p>";
+      console.error(error);
+    });
+});
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Logout event
 logoutBtn.addEventListener("click", function (e) {
   e.preventDefault();
 
@@ -163,6 +169,7 @@ logoutBtn.addEventListener("click", function (e) {
   });
 });
 
+// Logout button position
 window.addEventListener("scroll", function () {
   const topMove = window.scrollY + 5;
   logoutBtn.style.top = `${topMove}px`;
