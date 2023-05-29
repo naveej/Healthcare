@@ -104,7 +104,7 @@ function getRecommendations(nutrientIntakeDistribution) {
     // console.log('hello');
     // Retrieve recipe data for high FAT foods
     fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=balanced`
+      `https://api.edamam.com/api/recipes/v2?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&diet=balanced`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -141,7 +141,7 @@ function getRecommendations(nutrientIntakeDistribution) {
   if (nutrientIntakeDistribution.CHOCDF < targetNutrients.CHOCDF) {
     // Retrieve recipe data for high carbohydrate foods
     fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-fiber`
+      `https://api.edamam.com/api/recipes/v2?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-fiber`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -161,7 +161,7 @@ function getRecommendations(nutrientIntakeDistribution) {
   if (nutrientIntakeDistribution.PROCNT < targetNutrients.PROCNT) {
     // Retrieve recipe data for high protein foods
     fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-protein`
+      `https://api.edamam.com/api/recipes/v2?type=public&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-protein`
     )
       .then((response) => response.json())
       .then((data) => {
