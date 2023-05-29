@@ -29,7 +29,8 @@ if (isset($_SESSION['loggedin'])) {
         <button class="search__btn" type="submit">
           <i class='bx bxs-right-arrow-alt search__icon'></i>
         </button>
-        <input id="food-input" autocomplete="off" class="search__input" type="text" name="" id="" placeholder="Enter your todays intake...">
+        <input id="food-input" autocomplete="off" class="search__input" type="text" name="" id=""
+          placeholder="Enter your todays intake...">
 
       </form>
     </div>
@@ -39,7 +40,7 @@ if (isset($_SESSION['loggedin'])) {
       </div>
       <div class="recommendations hidden" id="recommendations">
         <h2>Recommended Recipes</h2>
-        <div class="result" id="result"></div>
+        <!-- <div class="result" id="result"></div> -->
         <div class="food__container" id="meal"></div>
       </div>
 

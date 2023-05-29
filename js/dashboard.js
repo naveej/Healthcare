@@ -11,12 +11,18 @@ const mealList = document.getElementById("meal");
 
 // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Function to fetch recommendation
-const fetchRecommendation = function (appId, appKey, dietType) {
+const addTitle = function (title) {
+  const html = `<h2 class="recommendations__title">${title}</h2>`;
+  mealList.insertAdjacentHTML("beforeend", html);
+};
+
+const fetchRecommendation = function (appId, appKey, dietType, title) {
   fetch(
     `https://api.edamam.com/api/recipes/v2?type=public&app_id=${appId}&app_key=${appKey}&diet=${dietType}`
   )
     .then((response) => response.json())
     .then((data) => {
+      addTitle(title);
       for (let i = 0; i < data.hits.length; i++) {
         const recipe = data.hits[i].recipe;
         const listItem = document.createElement("p");
@@ -58,16 +64,17 @@ function calculateNutrientDensity(totalFAT, totalCarbohydrate, protein) {
 // Nutrient Intake Distribution
 function calculateNutrientIntakeDistribution(nutrientDensity) {
   //nutrient distribution
-  const FAT = nutrientDensity * 0.25;
-  //  const ENERC_KCAL =calculateNutrientDensity.totalFAT* 9 + calculateNutrientDensity.totalCarbohydrate * 4 + calculateNutrientDensity.protein * 4
-  const CHOCDF = nutrientDensity * 0.45;
-  const PROCNT = nutrientDensity * 0.3;
-  const total = FAT + CHOCDF + PROCNT;
-  return {
-    FAT: (FAT / total) * 100,
-    CHOCDF: (CHOCDF / total) * 100,
-    PROCNT: (PROCNT / total) * 100,
+  const fatGms = nutrientDensity * 0.25;
+  const chocdfGms = nutrientDensity * 0.45;
+  const procntGms = nutrientDensity * 0.3;
+  const total = fatGms + chocdfGms + procntGms;
+  const nutrientIntakeDistribution = {
+    FAT: (fatGms / total) * 100,
+    CHOCDF: (chocdfGms / total) * 100,
+    PROCNT: (procntGms / total) * 100,
   };
+
+  return nutrientIntakeDistribution;
 }
 
 const APP_ID = "f14bc3eb";
@@ -75,24 +82,24 @@ const APP_KEY = "bae3a04e6b06e43d16dfed5c2f322ada";
 
 function getRecommendations(nutrientIntakeDistribution) {
   const targetNutrients = {
-    FAT: 25,
+    FAT: 60,
     CHOCDF: 300,
     PROCNT: 50,
   };
 
   if (nutrientIntakeDistribution.FAT < targetNutrients.FAT) {
     // Retrieve recipe data for high FAT foods
-    fetchRecommendation(APP_ID, APP_KEY, "balanced");
+    fetchRecommendation(APP_ID, APP_KEY, "balanced", "FAT");
   }
 
   if (nutrientIntakeDistribution.CHOCDF < targetNutrients.CHOCDF) {
     // Retrieve recipe data for high carbohydrate foods
-    fetchRecommendation(APP_ID, APP_KEY, "high-fiber");
+    fetchRecommendation(APP_ID, APP_KEY, "high-fiber", "CHOCDF");
   }
 
   if (nutrientIntakeDistribution.PROCNT < targetNutrients.PROCNT) {
     // Retrieve recipe data for high protein foods
-    fetchRecommendation(APP_ID, APP_KEY, "high-protein");
+    fetchRecommendation(APP_ID, APP_KEY, "high-protein", "PROCNT");
   }
 }
 
@@ -124,8 +131,6 @@ foodForm.addEventListener("submit", (event) => {
       recommendations.classList.add("hidden");
       nutrients.classList.add("hidden");
       resultsContainer.classList.add("zero__size");
-
-      console.log(data.foods[0]);
       const food = data.foods[0];
 
       const nutrientDensity = calculateNutrientDensity(
@@ -134,8 +139,11 @@ foodForm.addEventListener("submit", (event) => {
         food.nf_total_carbohydrate,
         food.nf_protein
       );
+
+      console.log(nutrientDensity);
       const nutrientDistribution =
         calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
+      console.log(nutrientDistribution);
       getRecommendations(nutrientDistribution);
       nutrientResults.innerHTML = `
         <h2>${food.food_name}</h2>
