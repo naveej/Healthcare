@@ -1,7 +1,7 @@
 html,
 body {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 * {
@@ -9,27 +9,27 @@ body {
 }
 
 body {
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-weight: var(--fw-body);
-  font-size: 1rem;
-  min-height: 100vh;
-  background-image: url(../images/food-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  backdrop-filter: blur(10px);
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-weight: var(--fw-body);
+    font-size: 1rem;
+    min-height: 100vh;
+    background-image: url(../images/food-background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(10px);
 }
 
 /* TODO: HEADER CONTENT */
 /* Page Styling */
-.rec__container{
+.rec__container {
     width: 100vw;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    pointer-events: none;   
+    pointer-events: none;
 }
 
 .search__container {
@@ -37,7 +37,7 @@ body {
     padding: 1rem 2rem;
     background: var(--gradient-secondary);
     border-radius: .75rem;
-    box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
     pointer-events: all;
 }
 
@@ -64,14 +64,14 @@ body {
 
 
 ::placeholder {
-    color: rgba(255,255,255,0.5)
+    color: rgba(255, 255, 255, 0.5)
 }
 
 .result__container {
     background-color: #fff;
     padding: 1rem 2rem;
     width: 90vw;
-    border: 2px solid  var(--color-primary);
+    border: 2px solid var(--color-primary);
     /* height: 200rem; */
     /* position: absolute;
     top: calc(1rem + 2rem);
@@ -108,7 +108,8 @@ body {
     border-radius: .75rem;
 }
 
-.result,.nutrient__list {
+.result,
+.nutrient__list {
     padding-inline: 1rem;
     padding-block: 2rem;
     list-style-type: square;
@@ -161,7 +162,13 @@ body {
     display: block !important;
     margin: auto;
     border-radius: .75rem;
-    box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.recommendations__title {
+    grid-column: 1 /span 4;
+    text-align: center;
+    /* padding-block: 2rem; */
 }
 
 .hidden {
