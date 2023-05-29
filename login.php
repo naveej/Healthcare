@@ -1,4 +1,6 @@
 <?php
+// Database connection
+require 'dbConnect.php';
 
 // start the session
 session_start();
@@ -15,12 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $response = 'Please fill in all fields';
     echo json_encode($response);
   } else {
-    // connect to database
-    $servername = "localhost";
-    $usernamesql = "root";
-    $dbName = "nutriplan";
-
-    $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
