@@ -38,7 +38,6 @@ const addRecipeImageLink = function (recipe) {
   recommendations.classList.remove("hidden");
   nutrients.classList.remove("hidden");
   resultsContainer.classList.remove("zero__size");
-  // console.log("img"+data.hits[i].recipe.image);
   let html = `
                     <div class = "meal-item">
                         <div class = "meal-img">
@@ -62,16 +61,17 @@ function calculateNutrientDensity(totalFAT, totalCarbohydrate, protein) {
 }
 
 // Nutrient Intake Distribution
-function calculateNutrientIntakeDistribution(nutrientDensity) {
-  //nutrient distribution
-  const fatGms = nutrientDensity * 0.25;
-  const chocdfGms = nutrientDensity * 0.45;
-  const procntGms = nutrientDensity * 0.3;
-  const total = fatGms + chocdfGms + procntGms;
+function calculateNutrientIntakeDistribution(
+  fatGms,
+  chocdfGms,
+  procntGms,
+  { FAT, CHOCDF, PROCNT }
+) {
+  const total = FAT + CHOCDF + PROCNT;
   const nutrientIntakeDistribution = {
-    FAT: (fatGms / total) * 100,
-    CHOCDF: (chocdfGms / total) * 100,
-    PROCNT: (procntGms / total) * 100,
+    FAT: (fatGms * total) / 100,
+    CHOCDF: (chocdfGms * total) / 100,
+    PROCNT: (procntGms * total) / 100,
   };
 
   return nutrientIntakeDistribution;
@@ -80,13 +80,7 @@ function calculateNutrientIntakeDistribution(nutrientDensity) {
 const APP_ID = "f14bc3eb";
 const APP_KEY = "bae3a04e6b06e43d16dfed5c2f322ada";
 
-function getRecommendations(nutrientIntakeDistribution) {
-  const targetNutrients = {
-    FAT: 60,
-    CHOCDF: 300,
-    PROCNT: 50,
-  };
-
+function getRecommendations(nutrientIntakeDistribution, targetNutrients) {
   if (nutrientIntakeDistribution.FAT < targetNutrients.FAT) {
     // Retrieve recipe data for high FAT foods
     fetchRecommendation(APP_ID, APP_KEY, "balanced", "FAT");
@@ -132,19 +126,26 @@ foodForm.addEventListener("submit", (event) => {
       nutrients.classList.add("hidden");
       resultsContainer.classList.add("zero__size");
       const food = data.foods[0];
+      const targetNutrients = {
+        FAT: 60,
+        CHOCDF: 300,
+        PROCNT: 50,
+      };
 
       const nutrientDensity = calculateNutrientDensity(
-        //nutrient density
         food.nf_total_fat,
         food.nf_total_carbohydrate,
         food.nf_protein
       );
+      //nutrient density
 
-      console.log(nutrientDensity);
-      const nutrientDistribution =
-        calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
-      console.log(nutrientDistribution);
-      getRecommendations(nutrientDistribution);
+      const nutrientDistribution = calculateNutrientIntakeDistribution(
+        food.nf_total_fat,
+        food.nf_total_carbohydrate,
+        food.nf_protein,
+        targetNutrients
+      );
+      getRecommendations(nutrientDistribution, targetNutrients);
       nutrientResults.innerHTML = `
         <h2>${food.food_name}</h2>
         <p>Quantity: ${food.serving_qty}</p>
