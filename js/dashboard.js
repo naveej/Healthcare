@@ -6,7 +6,47 @@ const recommendations = document.querySelector(".recommendations");
 const nutrients = document.querySelector(".nutrient__results");
 const resultsContainer = document.querySelector(".result__container");
 const logoutBtn = document.querySelector(".logout__btn");
-console.log("hello");
+const recommendationList = document.querySelector("#result");
+const mealList = document.getElementById("meal");
+
+// Function to fetch recommendation
+const fetchRecommendation = function (appId, appKey, dietType) {
+  fetch(
+    `https://api.edamam.com/search?q=&app_id=${appId}&app_key=${appKey}&diet=${dietType}`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      recommendationList.innerHTML = "";
+      for (let i = 0; i < data.hits.length; i++) {
+        const recipe = data.hits[i].recipe;
+        const listItem = document.createElement("p");
+        listItem.textContent = recipe.label;
+        recommendationList.appendChild(listItem);
+        addRecipeImageLink(recipe);
+      }
+    });
+};
+
+// Function to add the recipe images with button to the result container
+const addRecipeImageLink = function (recipe) {
+  recommendations.classList.remove("hidden");
+  nutrients.classList.remove("hidden");
+  resultsContainer.classList.remove("zero__size");
+  // console.log("img"+data.hits[i].recipe.image);
+  let html = `
+                    <div class = "meal-item">
+                        <div class = "meal-img">
+                            <img src = "${recipe.image}" alt = "food">
+                        </div>
+                        <div class = "meal-name">
+                            <h3>${recipe.label}</h3>
+                            <a href = "${recipe.url}" class = "recipe__button">Get Recipe</a>
+                        </div>
+                    </div>
+                `;
+  mealList.insertAdjacentHTML("afterbegin", html);
+};
+
 foodForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const foodInput = document.getElementById("food-input").value;
@@ -28,6 +68,8 @@ foodForm.addEventListener("submit", (event) => {
     .then((data) => {
       // Clear previous results
       nutrientResults.innerHTML = "";
+      recommendationList.innerHTML = "";
+      mealList.innerHTML = "";
       recommendations.classList.add("hidden");
       nutrients.classList.add("hidden");
       resultsContainer.classList.add("zero__size");
@@ -43,7 +85,7 @@ foodForm.addEventListener("submit", (event) => {
       );
       const nutrientDistribution =
         calculateNutrientIntakeDistribution(nutrientDensity); //nutrient distribution
-      const nutrientRecommendations = getRecommendations(nutrientDistribution);
+      getRecommendations(nutrientDistribution);
       nutrientResults.innerHTML = `
         <h2>${food.food_name}</h2>
         <p>Quantity: ${food.serving_qty}</p>
@@ -57,7 +99,6 @@ foodForm.addEventListener("submit", (event) => {
     .catch((error) => {
       nutrientResults.innerHTML =
         "<p>An error occurred while retrieving nutrient data.</p>";
-      console.error(error);
     });
 });
 
@@ -68,6 +109,7 @@ function calculateNutrientDensity(totalFAT, totalCarbohydrate, protein) {
   return protein / calorieDensity; //nutrient density
 }
 
+// Nutrient Intake Distribution
 function calculateNutrientIntakeDistribution(nutrientDensity) {
   //nutrient distribution
   const FAT = nutrientDensity * 0.25;
@@ -87,99 +129,25 @@ const APP_KEY = "bae3a04e6b06e43d16dfed5c2f322ada";
 
 function getRecommendations(nutrientIntakeDistribution) {
   const targetNutrients = {
-    FAT: 65,
+    FAT: 25,
     CHOCDF: 300,
     PROCNT: 50,
   };
-  //   console.log(nutrientDistribution);
-  //   const nutrientIntakeDistribution = calculateNutrientIntakeDistribution(nutrientDistribution);
-  //   console.log(nutrientIntakeDistribution);
-
-  const recommendationList = document.querySelector("#result");
-  const mealList = document.getElementById("meal");
-  //   console.log(recommendationList);
-  //   console.log(nutrientIntakeDistribution);
 
   if (nutrientIntakeDistribution.FAT < targetNutrients.FAT) {
-    // console.log('hello');
     // Retrieve recipe data for high FAT foods
-    fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=balanced`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        //console.log(data);
-        for (let i = 0; i < data.hits.length; i++) {
-          const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("p");
-          listItem.textContent = recipe.label;
-          console.log(recommendationList.innerHTML);
-          // if (recommendationList.hasChildNodes()) {
-          //   recommendationList.removeChild();
-          // }
-          recommendationList.appendChild(listItem);
-          recommendations.classList.remove("hidden");
-          nutrients.classList.remove("hidden");
-          resultsContainer.classList.remove("zero__size");
-          // console.log("img"+data.hits[i].recipe.image);
-          let html = `
-                    <div class = "meal-item">
-                        <div class = "meal-img">
-                            <img src = "${data.hits[i].recipe.image}" alt = "food">
-                        </div>
-                        <div class = "meal-name">
-                            <h3>${data.hits[i].recipe.label}</h3>
-                            <a href = "${data.hits[i].recipe.url}" class = "recipe__button">Get Recipe</a>
-                        </div>
-                    </div>
-                `;
-          mealList.insertAdjacentHTML("afterbegin", html);
-        }
-      });
+    fetchRecommendation(APP_ID, APP_KEY, "balanced");
   }
 
   if (nutrientIntakeDistribution.CHOCDF < targetNutrients.CHOCDF) {
     // Retrieve recipe data for high carbohydrate foods
-    fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-fiber`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        for (let i = 0; i < data.hits.length; i++) {
-          const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("p");
-          listItem.textContent = recipe.label;
-          // console.log(recommendationList.innerHTML);
-          // if (recommendationList.hasChildNodes()) {
-          //   recommendationList.removeChild();
-          // }
-          recommendationList.appendChild(listItem);
-        }
-      });
+    fetchRecommendation(APP_ID, APP_KEY, "high-fiber");
   }
 
   if (nutrientIntakeDistribution.PROCNT < targetNutrients.PROCNT) {
     // Retrieve recipe data for high protein foods
-    fetch(
-      `https://api.edamam.com/search?q=&app_id=${APP_ID}&app_key=${APP_KEY}&diet=high-protein`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data.hits);
-        for (let i = 0; i < data.hits.length; i++) {
-          const recipe = data.hits[i].recipe;
-          const listItem = document.createElement("p");
-          listItem.textContent = recipe.label;
-          // console.log(recommendationList.innerHTML);
-          // if (recommendationList.hasChildNodes()) {
-          //   recommendationList.removeChild();
-          // }
-          recommendationList.appendChild(listItem);
-        }
-      });
+    fetchRecommendation(APP_ID, APP_KEY, "high-protein");
   }
-
-  // ...
 }
 
 logoutBtn.addEventListener("click", function (e) {

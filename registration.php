@@ -1,4 +1,7 @@
 <?php
+// Database connections
+require 'dbConnect.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // get form data
     $firstName = $_POST["firstName"];
@@ -31,12 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // return error response
         echo json_encode(array("success" => false, "errors" => $errors));
     } else {
-        // save user to database
-        $servername = "localhost";
-        $usernamesql = "root";
-        $dbName = "nutriplan";
-
-        $conn = mysqli_connect($servername, $usernamesql, '', $dbName);
         if ($conn->connect_error) {
             echo json_encode("failed");
             die("Connection failed: " . $conn->connect_error);
