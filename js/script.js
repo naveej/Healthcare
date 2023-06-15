@@ -274,6 +274,7 @@ $(document).ready(function () {
           console.log("redirecting");
         } else {
           // Display error message
+          //console.log(response);
           $("#errorMessage").text(response);
         }
       },

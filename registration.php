@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors["password"] = "Password is required.";
     }
     if (empty($mobile)) {
-        $mobile["password"] = "Password is required.";
+        $mobile["mobile"] = "Phone number is required.";
     }
 
     if (count($errors) > 0) {
